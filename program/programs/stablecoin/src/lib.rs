@@ -1,16 +1,25 @@
 use anchor_lang::prelude::*;
 
+use state::*;
+mod state;
+use constants::*;
+mod constants;
+use instructions::*;
+mod instructions;
+
+
 declare_id!("5F9uizLngFBHGjPJGz3WqCpoic9yoa1zRGpHTUnWhALt");
 
 #[program]
 pub mod stablecoin {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn initialize_config(ctx: Context<InitializeConfig>) -> Result<()> {
+        process_initialize_config(ctx)
+    }
+
+    pub fn update_config(ctx: Context<UpdateConfig>, minimum_health_factor: u64) -> Result<()> {
+        process_update_config(ctx, minimum_health_factor)
     }
 }
 
-#[derive(Accounts)]
-pub struct Initialize {}
