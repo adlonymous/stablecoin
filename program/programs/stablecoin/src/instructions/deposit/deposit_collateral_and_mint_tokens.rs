@@ -4,6 +4,7 @@ use anchor_spl::{
     token_interface::{Mint, Token2022, TokenAccount},
 };
 use crate::{Config, Collateral, SEED_CONFIG_ACCOUNT, SEED_COLLATERAL_ACCOUNT, SEED_SOL_ACCOUNT};
+use pyth_solana_receiver_sdk::price_update::PriceUpdateV2;
 
 #[derive(Accounts)]
 pub struct DepositCollateralAndMintTokens<'info>{
@@ -42,4 +43,5 @@ pub struct DepositCollateralAndMintTokens<'info>{
     pub token_program: Program<'info, Token2022>,
     pub associated_token_program: Program<'info, AssociatedTokenProgram>,
     pub system_program: Program<'info, System>,
+    pub price_update: Account<'info, PriceUpdateV2>,
 }
