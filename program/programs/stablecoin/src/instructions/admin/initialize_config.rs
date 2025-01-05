@@ -2,8 +2,8 @@ use anchor_lang::prelude::*;
 use crate::{Config, SEED_CONFIG_ACCOUNT, SEED_MINT_ACCOUNT, MINT_DECIMALS, LIQUIDATION_THRESHOLD, LIQUIDATION_BONUS, MIN_HEALTH_FACTOR};
 use anchor_spl::token_interface::{Mint, Token2022};
 
-#[derive(Account)]
-pub struct InitializeConfig {
+#[derive(Accounts)]
+pub struct InitializeConfig<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
 
