@@ -29,7 +29,7 @@ pub fn calculate_health_factor(
 
     let collateral_adjusted_for_liquidation_threshold = (collateral_value_in_usd * config.liquidation_threshold) / 100;
 
-    if collateral.amount_minted = 0 {
+    if collateral.amount_minted == 0 {
         msg!("Health Factor Max");
         return Ok(u64::MAX);
     }

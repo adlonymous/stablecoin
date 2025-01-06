@@ -59,9 +59,9 @@ pub fn process_deposit_collateral_and_mint_tokens(
 
     if !collateral_account.is_initialized {
         collateral_account.is_initialized = true;
-        collateral_account.depositor = *ctx.accounts.depositor.key();
-        collateral_account.sol_account = *ctx.accounts.sol_account.key();
-        collateral_account.token_account = *ctx.accounts.token_account.key();
+        collateral_account.depositor = ctx.accounts.depositor.key();
+        collateral_account.sol_account = ctx.accounts.sol_account.key();
+        collateral_account.token_account = ctx.accounts.token_account.key();
         collateral_account.bump = ctx.bumps.collateral_account;
     }
 
